@@ -13,23 +13,12 @@
       "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
     },
     {
-      "data": {
-        "url": "volcanoes-around-the-world-in-2021.csv"
-      },
+      "data": {"url": "data/volcanoes-around-the-world-in-2021.csv"},
       "mark": {"type": "circle", "tooltip": {"content": "data"}},
       "encoding": {
-        "longitude": {"field": "longitude", "type": "quantitative"},
-        "latitude": {"field": "latitude", "type": "quantitative"},
-        "size": {
-          "field": "Elevation (m)",
-          "type": "quantitative",
-          "title": "Elevation (m)"
-        },
-        "color": {
-          "field": "Type",
-          "type": "nominal",
-          "title": "Volcano Type"
-        }
+        "longitude": {"field": "Longitude", "type": "quantitative"},
+        "latitude": {"field": "Latitude", "type": "quantitative"},
+        "color": {"field": "Type", "type": "nominal", "title": "Volcano Type"}
       }
     }
   ]
