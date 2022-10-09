@@ -1078,7 +1078,7 @@ Kamchatka and Mainland Asia,1000-057,Golaya,Russia,Kamchatka,52.263,157.787,858,
 " Japan, Taiwan, Marianas",0804-05=,Hachijojima,Japan,Izu Is-Japan,33.137,139.766,854,Stratovolcano,Historical,D5,On land
  Africa and Red Sea,0201-116,Groppo,Ethiopia,Africa-NE,11.816,40.242,852,Stratovolcano,Holocene,U,On land
  Melanesia and Australia,0507-11-,Aneityum,Vanuatu,Vanuatu-SW Pacific,-20.2,169.78,852,Stratovolcano,Holocene,Unknown,On land
-" Japan, Taiwan, Marianas",0804-041,Mikurajima,Japan,Izu Is-Japan,33.874,139.602,851,Submarine volcano,Holocene,Unknown,Underwater
+" Japan, Taiwan, Marianas",0804-041,Mikurajima,Japan,Izu Is-Japan,33.874,139.602,851,Submarine volcano,Holocene,Unknown,On land
  Melanesia and Australia,0503-004,Madilogo,Papua New Guinea,New Guinea,-9.2,147.57,850,Pyroclastic cone,Holocene,U,On land
 Indonesia,0601-28=,Hulubelu,Indonesia,Sumatra,-5.334,104.59,849,Caldera,Fumarolic,U,On land
 Antarctica,1900-09=,Saunders,Antarctica,Antarctica,-57.8,-26.483,843,Stratovolcano,Historical,D3,On land
@@ -1225,7 +1225,7 @@ Kamchatka and Mainland Asia,1000-551,Kinenin,Russia,Kamchatka,57.35,160.97,583,M
  Melanesia and Australia,0502-07=,Krummel-Garbuna-Welcker,Papua New Guinea,New Britain-SW Pac,-5.416,150.027,564,Stratovolcano,Holocene,U,On land
 Kamchatka and Mainland Asia,1000-051,Ozernoy,Russia,Kamchatka,51.88,157.38,562,Shield volcano,Holocene,U,On land
 Alaska,1101-15-,Sergief,United States,Aleutian Is,52.03,-174.93,560,Stratovolcano,Uncertain,Unknown,On land
-New Zealand to Fiji,0403-101,Tafahi,Tonga,Tonga-SW Pacific,-15.85,-173.72,560,Submarine volcano,Historical,D1,Underwater
+New Zealand to Fiji,0403-101,Tafahi,Tonga,Tonga-SW Pacific,-15.85,-173.72,560,Submarine volcano,Historical,D1,On land
 " Japan, Taiwan, Marianas",0802-022,Akusekijima,Japan,Ryukyu Is,29.465,129.594,555,Stratovolcanoes,Holocene?,?,On land
 " Japan, Taiwan, Marianas",0803-191,Hijiori,Japan,Honshu-Japan,38.599,140.162,552,Caldera,Radiocarbon,D7,On land
 Antarctica,1900-13=,Zavodovski,Antarctica,Antarctica,-56.3,-27.57,551,Stratovolcano,Historical,D3,On land
@@ -1339,7 +1339,7 @@ New Zealand to Fiji,0401-04=,Whakaari/White Island,New Zealand,New Zealand,-37.5
 " Japan, Taiwan, Marianas",0803-262,Megata,Japan,Honshu-Japan,39.95,139.73,291,Maar,Tephrochronology,D7,On land
  Africa and Red Sea,0201-05=,Gada Ale,Ethiopia,Africa-NE,13.975,40.408,287,Stratovolcano,Holocene,U,On land
 " Japan, Taiwan, Marianas",0804-19=,Guguan,United States,Mariana Is-C Pacific,17.307,145.845,287,Stratovolcano,Historical,D3,On land
-Iceland and Arctic Ocean,1702-01=,Vestmannaeyjar,Iceland,Iceland-S,63.416,-20.266,283,Submarine volcano,Historical,D1,Underwater
+Iceland and Arctic Ocean,1702-01=,Vestmannaeyjar,Iceland,Iceland-S,63.416,-20.266,283,Submarine volcano,Historical,D1,On land
 Indonesia,0605-03=,Gunungapi Wetar,Pacific Ocean,Banda Sea,-6.642,126.65,282,Stratovolcano,Historical,D5,On land
  South America,1508-08-,Pali-Aike Volcanic Field,Chile,Chile-S,-52.082,-69.698,282,Cinder cone,Anthropology,D7,On land
 Alaska,1101-14-,Koniuji,United States,Aleutian Is,52.22,-175.13,273,Stratovolcano,Uncertain,Unknown,On land
@@ -1387,58 +1387,58 @@ Mediterranean and West Asia,0102-051,Yali,Greece,Greece,36.671,27.14,180,Lava do
 Philippines and SE Asia,0705-02-,Ly Son Group,Vietnam,SE Asia,15.38,109.12,157,Volcanic field,Holocene,U,On land
 Indonesia,0602-00=,Krakatau,Indonesia,Indonesia,-6.102,105.423,155,Caldera,Historical,D1,On land
 " Japan, Taiwan, Marianas",0803-003,Oki-Dogo,Japan,Honshu-Japan,36.176,133.334,151,Shield volcano,Anthropology,U,On land
-Alaska,1101-30-,Bogoslof,United States,Aleutian Is,53.93,-168.03,150,Submarine volcano,Historical,D1,Underwater
+Alaska,1101-30-,Bogoslof,United States,Aleutian Is,53.93,-168.03,150,Submarine volcano,Historical,D1,On land
 New Zealand to Fiji,0404-05-,Wallis Islands,Wallis & Futuna,SW Pacific,-13.3,-176.17,143,Shield volcano,Holocene,U,On land
 West Indies,1600-21-,Piparo,Trinidad,Trinidad,10,-61,140,Mud volcano,Historical,D1,On land
 Iceland and Arctic Ocean,1701-02=,Reykjanes,Iceland,Iceland-SW,63.85,-22.566,140,Crater rows,Historical,D6,On land
-" Japan, Taiwan, Marianas",0804-08=,Sumisujima,Japan,Izu Is-Japan,31.44,140.051,136,Submarine volcano,Historical,D2,Underwater
-New Zealand to Fiji,0403-04=,Hunga Tonga-Hunga Ha'apai,Tonga,Tonga-SW Pacific,-20.536,-175.382,114,Submarine volcano,Historical,D1,Underwater
-" Japan, Taiwan, Marianas",0804-091,Sofugan,Japan,Izu Is-Japan,29.794,140.342,99,Submarine volcano,Uncertain,Unknown,Underwater
+" Japan, Taiwan, Marianas",0804-08=,Sumisujima,Japan,Izu Is-Japan,31.44,140.051,136,Submarine volcano,Historical,D2,On land
+New Zealand to Fiji,0403-04=,Hunga Tonga-Hunga Ha'apai,Tonga,Tonga-SW Pacific,-20.536,-175.382,114,Submarine volcano,Historical,D1,On land
+" Japan, Taiwan, Marianas",0804-091,Sofugan,Japan,Izu Is-Japan,29.794,140.342,99,Submarine volcano,Uncertain,Unknown,On land
 Mexico and Central America,1401-023,"Isabel, Isla",Mexico,Mexico,21.848,-105.886,95,Stratovolcano,Holocene,U,On land
 Alaska,1102-131,Ukinrek Maars,United States,Alaska Peninsula,57.832,-156.51,91,Maar,Historical,D1,On land
 Kamchatka and Mainland Asia,1000-023,Kurile Lake,Russia,Kamchatka,51.45,157.12,81,Caldera,Radiocarbon,D7,On land
-Iceland and Arctic Ocean,1701-01=,Reykjaneshryggur,Iceland,Iceland-SW,63.67,-23.33,80,Submarine volcanoes,Historical,D1,Underwater
+Iceland and Arctic Ocean,1701-01=,Reykjaneshryggur,Iceland,Iceland-SW,63.67,-23.33,80,Submarine volcanoes,Historical,D1,On land
  Melanesia and Australia,0501-07=,Ritter Island,Papua New Guinea,New Guinea-NE of,-5.519,148.115,75,Stratovolcano,Historical,D1,On land
 Mexico and Central America,1403-16-,Utila Island,Honduras,Honduras,16.1,-86.9,74,Pyroclastic cone,Holocene,U,On land
  South America,1503-081,Genovesa,Ecuador,Galapagos,0.32,-89.958,64,Shield volcano,Holocene,U,On land
 Alaska,1105-06-,Tlevak Strait-Suemez Is.,United States,Alaska-SE,55.25,-133.3,50,Volcanic field,Holocene,U,On land
-New Zealand to Fiji,0402-01=,Curtis Island,New Zealand,Kermadec Is,-30.543,-178.556,47,Submarine volcano,Uncertain,Unknown,Underwater
-New Zealand to Fiji,0403-07=,Lateiki,Tonga,Tonga-SW Pacific,-19.18,-174.87,43,Submarine volcano,Historical,D1,Underwater
+New Zealand to Fiji,0402-01=,Curtis Island,New Zealand,Kermadec Is,-30.543,-178.556,47,Submarine volcano,Uncertain,Unknown,On land
+New Zealand to Fiji,0403-07=,Lateiki,Tonga,Tonga-SW Pacific,-19.18,-174.87,43,Submarine volcano,Historical,D1,On land
 " Japan, Taiwan, Marianas",0802-081,Yonemaru-Sumiyoshiike,Japan,Kyushu-Japan,31.771,130.592,40,Maar,Radiocarbon,D7,On land
- Kuril Islands,0900-211,Srednii,Russia,Kuril Is,47.6,152.92,36,Submarine volcano,Holocene,U,Underwater
+ Kuril Islands,0900-211,Srednii,Russia,Kuril Is,47.6,152.92,36,Submarine volcano,Holocene,U,On land
 " Japan, Taiwan, Marianas",0804-096,Nishinoshima,Japan,Volcano Is-Japan,27.247,140.874,25,Caldera,Historical,D2,On land
 Alaska,1105-05-,Duncan Canal,United States,Alaska-SE,56.5,-133.1,15,Unknown,Holocene,U,On land
-" Japan, Taiwan, Marianas",0804-07=,Myojinsho,Japan,Izu Is-Japan,31.888,139.918,11,Submarine volcano,Historical,D1,Underwater
-Iceland and Arctic Ocean,1705-01=,Kolbeinsey Ridge,Iceland,Iceland-N of,66.67,-18.5,5,Submarine volcano,Historical,D4,Underwater
+" Japan, Taiwan, Marianas",0804-07=,Myojinsho,Japan,Izu Is-Japan,31.888,139.918,11,Submarine volcano,Historical,D1,On land
+Iceland and Arctic Ocean,1705-01=,Kolbeinsey Ridge,Iceland,Iceland-N of,66.67,-18.5,5,Submarine volcano,Historical,D4,On land
  Africa and Red Sea,0202-162,Unnamed,Tanzania,Africa-E,-8.63,33.57,0,Pyroclastic cone,Holocene,U,On land
  Africa and Red Sea,0205-07-,"Umm Arafieb, Jebel",Sudan,Africa-N,18.17,33.83,0,Shield volcano,Holocene,Unknown,On land
  Africa and Red Sea,0204-04-,Ngaoundere Plateau,Cameroon,Africa-W,7.25,13.67,0,Volcanic field,Holocene,Unknown,On land
  Africa and Red Sea,0204-05-,Biu Plateau,Nigeria,Africa-W,10.75,12,0,Volcanic field,Holocene,Unknown,On land
-Alaska,1101-17-,Unnamed,United States,Aleutian Is,52,-173.5,0,Submarine volcano,Hydrophonic,D1,Underwater
- Atlantic Ocean,1806-03-,Thompson Island,Atlantic Ocean,Atlantic-S,-53.93,5.5,0,Submarine volcano,Uncertain,Unknown,Underwater
-Iceland and Arctic Ocean,1703-15-,Manareyjar,Iceland,Iceland-N,66.3,-17.1,0,Submarine volcano,Historical,D3,Underwater
+Alaska,1101-17-,Unnamed,United States,Aleutian Is,52,-173.5,0,Submarine volcano,Hydrophonic,D1,On land
+ Atlantic Ocean,1806-03-,Thompson Island,Atlantic Ocean,Atlantic-S,-53.93,5.5,0,Submarine volcano,Uncertain,Unknown,On land
+Iceland and Arctic Ocean,1703-15-,Manareyjar,Iceland,Iceland-N,66.3,-17.1,0,Submarine volcano,Historical,D3,On land
 Indonesia,0601-191,Pendan,Indonesia,Sumatra,-2.82,102.02,0,Unknown,Holocene,U,On land
 " Japan, Taiwan, Marianas",0804-191,Zealandia Bank,United States,Mariana Is-C Pacific,16.88,145.85,0,Stratovolcano,Holocene,U,On land
-" Japan, Taiwan, Marianas",0801-03=,Unnamed,Taiwan,Taiwan-E of,24,121.83,0,Submarine volcano,Historical,D3,Underwater
+" Japan, Taiwan, Marianas",0801-03=,Unnamed,Taiwan,Taiwan-E of,24,121.83,0,Submarine volcano,Historical,D3,On land
 Kamchatka and Mainland Asia,1004-02-,Tianshan Volc Group,China,China-W,42.5,82.5,0,Volcanic field,Historical,D6,On land
 Kamchatka and Mainland Asia,1004-01-,Turfan,China,China-W,42.9,89.25,0,Cone,Historical,D6,On land
 Kamchatka and Mainland Asia,1000-232,Unnamed,Russia,Kamchatka,55.92,161.75,0,Cinder cone,Holocene,Unknown,On land
 Kamchatka and Mainland Asia,1006-01-,Xianjindao,North Korea,Korea,41.33,128,0,Unknown,Historical,D5,On land
 Kamchatka and Mainland Asia,1002-01-,Southern Sikhote-Alin,Russia,Russia-SE,44.5,135.5,0,Volcanic field,Holocene,U,On land
- South America,1506-03=,Unnamed,Chile,Chile-Is,-33.622,-78.78,0,Submarine volcano,Historical,D3,Underwater
+ South America,1506-03=,Unnamed,Chile,Chile-Is,-33.622,-78.78,0,Submarine volcano,Historical,D3,On land
 New Zealand to Fiji,0403-02=,Unnamed,Tonga,Tonga-SW Pacific,-21.07,-175.33,0,Not Volcanic,Historical,D2,On land
-Middle East and Indian Ocean,0302-14-,Ormus Islands,Indian Ocean,Arabia-S,26,57,0,Submarine volcano,Holocene,D2,Underwater
-Middle East and Indian Ocean,0301-15-,Unnamed,Indian Ocean,Arabia-S,12.25,45,0,Submarine volcano,Uncertain,Unknown,Underwater
-Middle East and Indian Ocean,0305-01=,Unnamed,Indian Ocean,Indian O-E,11.75,80.75,0,Submarine volcano,Uncertain,Unknown,Underwater
+Middle East and Indian Ocean,0302-14-,Ormus Islands,Indian Ocean,Arabia-S,26,57,0,Submarine volcano,Holocene,D2,On land
+Middle East and Indian Ocean,0301-15-,Unnamed,Indian Ocean,Arabia-S,12.25,45,0,Submarine volcano,Uncertain,Unknown,On land
+Middle East and Indian Ocean,0305-01=,Unnamed,Indian Ocean,Indian O-E,11.75,80.75,0,Submarine volcano,Uncertain,Unknown,On land
 Middle East and Indian Ocean,0302-02-,Qal'eh Hasan Ali,Iran,Iran,29.4,57.57,0,Maar,Holocene,Unknown,On land
 Middle East and Indian Ocean,0300-02-,Unnamed,Syria,Syria,36.67,37,0,Unknown,Historical,D6,On land
-Mexico and Central America,1401-008,Unnamed,Mexico,Mexico,28,-115,0,Submarine volcano,Uncertain,Unknown,Underwater
+Mexico and Central America,1401-008,Unnamed,Mexico,Mexico,28,-115,0,Submarine volcano,Uncertain,Unknown,On land
 Mediterranean and West Asia,0103-022,Girekol,Turkey,Turkey,39.17,43.33,0,Unknown,Holocene,U,On land
- Melanesia and Australia,0502-131,Unnamed,Papua New Guinea,New Britain-SW Pac,-4.75,150.85,0,Submarine volcano,Uncertain,Unknown,Underwater
- Melanesia and Australia,0502-001,Unnamed,Papua New Guinea,New Britain-SW Pac,-5.2,148.57,0,Submarine volcano,Uncertain,Unknown,Underwater
+ Melanesia and Australia,0502-131,Unnamed,Papua New Guinea,New Britain-SW Pac,-4.75,150.85,0,Submarine volcano,Uncertain,Unknown,On land
+ Melanesia and Australia,0502-001,Unnamed,Papua New Guinea,New Britain-SW Pac,-5.2,148.57,0,Submarine volcano,Uncertain,Unknown,On land
  Melanesia and Australia,0507-07=,Kuwae,Vanuatu,Vanuatu-SW Pacific,-16.829,168.536,-2,Caldera,Historical,D1,On land
 Indonesia,0607-03=,Banua Wuhu,Indonesia,Sangihe Is-Indonesia,3.138,125.491,-5,Submarine volcano,Historical,D2,Underwater
- Melanesia and Australia,0501-041,Hankow Reef,Papua New Guinea,New Guinea-NE of,-4.883,146.717,-5,Unknown,Uncertain,Unknown,On land
+ Melanesia and Australia,0501-041,Hankow Reef,Papua New Guinea,New Guinea-NE of,-4.883,146.717,-5,Unknown,Uncertain,Unknown,Underwater
 West Indies,1600-07=,Unnamed,Netherlands,W Indies,16.13,-61.28,-7,Submarine volcano,Historical,D3,Underwater
 " Japan, Taiwan, Marianas",0804-142,Supply Reef,United States,Mariana Is-C Pacific,20.13,145.1,-8,Submarine volcano,Hydrophonic,D1,Underwater
 Mediterranean and West Asia,0101-07=,Campi Flegrei del Mar di Sicilia,Italy,Italy,37.1,12.7,-8,Submarine volcanoes,Historical,D3,Underwater
@@ -1452,10 +1452,10 @@ Philippines and SE Asia,0704-05=,Unnamed,Philippines,Luzon-N of,20.33,121.75,-24
 " Japan, Taiwan, Marianas",0804-13=,Fukutoku-Oka-no-Ba,Japan,Volcano Is-Japan,24.285,141.481,-29,Submarine volcano,Historical,D1,Underwater
 New Zealand to Fiji,0403-102,Curacoa,Tonga,Tonga-SW Pacific,-15.62,-173.67,-33,Submarine volcano,Historical,D2,Underwater
  Hawaii and Pacific Ocean,1303-08-,Macdonald,Antarctica,Austral Is-C Pacific,-28.98,-140.25,-39,Submarine volcano,Historical,D1,Underwater
- Canada and Western USA,1203-20-,Salton Buttes,United States,US-California,33.197,-115.616,-40,Cinder cone,Holocene,U,On land
+ Canada and Western USA,1203-20-,Salton Buttes,United States,US-California,33.197,-115.616,-40,Cinder cone,Holocene,U,Underwater
 New Zealand to Fiji,0403-091,Unnamed,Tonga,Tonga-SW Pacific,-18.325,-174.365,-40,Submarine volcano,Historical,D1,Underwater
 " Japan, Taiwan, Marianas",0804-21=,Esmeralda Bank,United States,Mariana Is-C Pacific,15,145.25,-43,Submarine volcano,Fumarolic,U,Underwater
- Africa and Red Sea,0201-041,Dallol,Ethiopia,Africa-NE,14.242,40.3,-48,Explosion crater,Historical,D2,On land
+ Africa and Red Sea,0201-041,Dallol,Ethiopia,Africa-NE,14.242,40.3,-48,Explosion crater,Historical,D2,Underwater
 Philippines and SE Asia,0705-07-,Veteran,Vietnam,SE Asia,9.83,109.05,-50,Submarine volcano,Fumarolic,U,Underwater
 Antarctica,1900-14-,Protector Seamounts,Antarctica,Antarctica,-55.912,-28.167,-55,Submarine volcano,Historical,D2,Underwater
 New Zealand to Fiji,0402-022,Giggenbach,New Zealand,Kermadec Is,-30.036,-178.712,-65,Submarine volcano,Fumarolic,U,Underwater
@@ -1565,7 +1565,7 @@ Indonesia,0607-05=,Unnamed,Indonesia,Sangihe Is-Indonesia,3.97,124.17,-5000,Subm
  Atlantic Ocean,1805-04=,Unnamed,Atlantic Ocean,Atlantic-C,-3.5,-24.5,-5300,Submarine volcano,Uncertain,Unknown,Underwater
  Hawaii and Pacific Ocean,1305-03-,Udintsev Transform,Pacific Ocean,Pacific-S,-56.153,-143.373,-5700,Submarine volcano,Uncertain,?,Underwater
 " Japan, Taiwan, Marianas",0801-01=,Unnamed,Taiwan,Taiwan-E of,20.93,134.75,-6000,Submarine volcano,Uncertain,Unknown,Underwater
- Africa and Red Sea,0205-003,In Ezzane Volc Field,Algeria,Africa-N,23,10.833,,Volcanic field,Holocene?,?,On land
+ Africa and Red Sea,0205-003,In Ezzane Volc Field,Algeria,Africa-N,23,10.833,,Volcanic field,Holocene?,?,Underwater
 " Japan, Taiwan, Marianas",0804-138,Unnamed,United States,Mariana Is-C Pacific,21,142.9,,Submarine volcano?,Uncertain,?,Underwater
 " Japan, Taiwan, Marianas",0804-139,Unnamed,United States,Mariana Is-C Pacific,20.3,143.2,,Submarine volcano?,Uncertain,?,Underwater
  South America,1508-058,Río Murta,Chile,Chile-S,-46.167,-72.667,,Pyroclastic cones,Holocene?,?,On land
