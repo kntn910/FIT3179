@@ -112,7 +112,7 @@
                 "type": "text",
                 "size": 14,
                 "color": "black",
-                "radius": 180     
+                "radius": 160     
               },
               "encoding": {
                 "text": {"field": "text_annotation"}
@@ -146,7 +146,7 @@
             "x": {
               "field": "Region",
               "type": "nominal",          
-              "axis": {"labelAngle": -45, "labelFontSize": 12, "titleFontSize": 14}       
+              "axis": {"title": "", "labelAngle": -45}       
             },
             "y": {
               "field": "Count of Volcanoes",
