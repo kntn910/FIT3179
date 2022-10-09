@@ -1,0 +1,125 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Volcanoes on Earth in 2021",
+  "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/week-9-homework/data/volcanoes-around-the-world-in-2021.csv"},
+  "hconcat": [
+    {
+      "width": 500,
+      "height": 500,
+      "title": "Volcanoes on Land or Underwater",
+      "transform": [
+        {
+          "aggregate": [{
+            "op": "count",
+            "field": "Volcano Name",
+            "as": "Count of Volcanoes by Placement"
+          }],
+          "groupby": ["Placement"]
+        }
+      ],      
+      "encoding": {     
+        "theta": {
+          "field": "Count of Volcanoes by Placement",
+          "type": "quantitative",
+          "stack": true
+        },
+        "color": {
+          "field": "Placement",
+          "type": "nominal",
+          "title": "Volcano placement",
+          "scale": {
+            "domain": ["Underwater", "On land"],
+            "range": ["#cbf2ff", "#bdf5b3"]
+          },
+          "legend": {"titleFontSize": 13, "labelFontSize": 12}
+        },
+        "opacity": {
+          "condition": {"param": "placement_selection", "value": 1},
+          "value": 0.2
+        },
+        "tooltip": [
+          {"field": "Count of Volcanoes by Placement", "title": "Number of Volcanoes", "type": "quantitative"},
+          {"field": "Placement", "type": "nominal"}         
+        ]
+      },
+      "layer": [
+        {
+          "params": [{
+            "name": "placement_selection",
+            "select": {"type": "point", "fields": ["Placement"]},
+            "bind": "legend"
+          }],
+          "mark": {"type": "arc", "outerRadius": 200}         
+        },
+        {
+          "transform": [
+            {
+              "calculate": "datum['Count of Volcanoes by Placement'] + ' ' + datum['Placement']",
+              "as": "text_annotation"
+            }
+          ],
+          "mark": {
+            "type": "text",
+            "size": 14,
+            "color": "black",
+            "radius": 220     
+          },
+          "encoding": {
+            "text": {"field": "text_annotation"}
+          }
+        }        
+      ]
+    },
+    {
+      "transform": [
+        {"filter": {"param": "placement_selection"}},
+        {
+          "aggregate": [
+            {
+            "op": "count",
+            "field": "Volcano Name",
+            "as": "Count of Volcanoes"
+            }
+          ],
+          "groupby": ["Region", "Placement"]
+        },
+        {
+    "calculate": "if(datum.Placement === 'On land', 0, if(datum.Placement === 'Underwater', 1, 2))",
+    "as": "stackOrder"
+  }
+      ],
+      "width": 800,
+      "height": 500,
+      "title": "Volcanoes by Region",
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Region",
+          "type": "nominal",          
+          "axis": {"labelAngle": -45, "labelFontSize": 12, "titleFontSize": 14}       
+        },
+        "y": {
+          "field": "Count of Volcanoes",
+          "type": "quantitative",
+          "axis": {"title": "Number of Volcanoes", "tickCount": 7, "titleFontSize": 14},
+          "scale": {"domain": [0, 200]}
+        },
+        "color": {
+          "field": "Placement",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Underwater", "On land"],
+            "range": ["#b2e2e2", "#bae4b3"]
+          }
+        },
+        "order": {"field": "stackOrder"},
+        "tooltip": [
+          {"field": "Count of Volcanoes", "title": "Volcanoes", "type": "quantitative"},
+          {"field": "Placement", "type": "nominal"},
+          {"field": "Region", "type": "nominal"}  
+        ]
+      }
+    }
+  ],
+  "config": {"title": {"font": "sans-serif", "fontSize": 16}}
+}
