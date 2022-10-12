@@ -1,0 +1,89 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"},
+    "transform": [
+      {"filter": "datum['Elevation1'] != 'Not available'"},
+      {
+        "bin": {"step": 1000, "extent": [-6000, 7000]},
+        "field": "Elevation1",
+        "as": "elevation"
+      }
+    ],
+    "hconcat": [
+      {
+        "width": 600,
+        "height": 400,
+        "encoding": {
+          "x": {
+            "field": "elevation",
+            "title": "Elevation (m)",
+            "axis": {
+              "titleFontSize": 12,
+              "labelAngle": 0,
+              "values": [-6000, -4000, -2000, 0, 2000, 4000, 6000],
+              "labelFontSize": 11,
+              "labelColor": "gray"
+            }
+          },
+          "y": {
+            "aggregate": "count",
+            "title": "",
+            "axis": {"title": "Number of Volcanoes", "titleFontSize": 14, "grid": false, "ticks": false, "values": []}
+          },
+          "color": {
+            "condition": [
+              {"test": "datum.elevation < 0", "value": "#cbf2ff"}        
+            ], "value": "#bdf5b3"
+          }
+        },
+        "layer": [
+          {
+            "mark": {
+            "type": "bar",
+            "stroke": null
+        }
+          },
+          {
+            "mark": {
+              "type": "text",
+              "fontStyle": "italic",
+              "fontSize": 14,
+              "align": "center",
+              "baseline": "middle",
+              "dy": -10
+            },
+            "encoding": {"text": {"aggregate": "count"}}
+          }
+        ]
+      },
+      {
+        "data": {
+          "values": [
+            {"placement": "Underwater"},
+            {"placement": "On land"}
+          ]
+        },
+        "mark": {
+          "type": "circle",
+          "fill": null
+        },
+        "encoding": {
+          "color": {
+            "field": "placement",
+            "legend": {
+              "title": "",
+              "labelFontSize": 13
+            },
+            "scale": {
+              "domain": ["Underwater", "On land"],
+              "range": ["#ACE9FD", "#9CFB8B"]
+            }
+          }        
+        }    
+      }
+    ],
+    "config": {
+      "view": {"stroke": "transparent"}
+    }
+  }
+  

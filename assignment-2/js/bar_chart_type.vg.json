@@ -1,0 +1,107 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": ".                 Type",
+    "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"},
+    "params": [
+      {
+        "name": "country_select",
+        "bind": {
+          "input": "select",
+          "options": [
+            null,
+            "United States",
+            "Japan",
+            "Russia",
+            "Indonesia",
+            "Chile",
+            "Papua New Guinea",
+            "Ethiopia",
+            "Mexico",
+            "Philippines",
+            "New Zealand"
+          ],
+          "labels": [
+            "All",
+            "United States",
+            "Japan",
+            "Russia",
+            "Indonesia",
+            "Chile",
+            "Papua New Guinea",
+            "Ethiopia",
+            "Mexico",
+            "Philippines",
+            "New Zealand"
+          ],
+          "name": "Top 10 Countries"
+        }
+      }
+    ],
+    "transform": [
+      {"filter": "country_select == null | datum.Country == country_select"},
+      {
+        "aggregate": [{
+          "op": "count",
+          "field": "Volcano_Name",
+          "as": "Volcano_Count"
+        }],
+        "groupby": ["Volcano_Type"]
+      },
+      {
+        "window": [{"op": "rank", "as": "ranking"}],
+        "sort": [{"field": "Volcano_Count", "order": "descending"}]
+      }
+    ],
+    "vconcat": [
+      {
+        "width": 600,
+        "height": 500,
+        "mark": {
+          "type": "bar",
+          "stroke": null,
+          "color": "#FFE4B2"
+        },
+        "encoding": {
+          "x": {
+            "field": "Volcano_Count",
+            "type": "quantitative",
+            "title": "Number of Volcanoes",
+            "axis": {
+              "titleFontSize": 12,
+              "labelFontSize": 11,
+              "labelColor": "gray",
+              "tickCount": 4,
+              "gridDash": [2, 2]
+            }
+          },
+          "y": {
+            "field": "Volcano_Type",
+            "type": "nominal",
+            "title": "",
+            "axis": {
+              "labelFontSize": 12,
+              "domain": false,
+              "grid": false,
+              "ticks": false
+            },
+            "sort": "-x"
+          },
+          "color": {
+            "condition": [
+              {"test": "datum.ranking == 1", "value": "#FFD17B"}
+            ]
+          },
+          "tooltip": [
+            {"field": "Volcano_Count", "title": "Volcanoes", "type": "quantitative"}
+          ]
+        }
+      }
+    ]
+    ,
+    "config": {
+    "view": {
+       "stroke": "transparent"
+    }
+  }
+  }
+  

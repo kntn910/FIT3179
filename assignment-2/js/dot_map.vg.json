@@ -1,77 +1,117 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 1000,
+  "width": 900,
   "height": 500,
-  "title": "Volcano Countrys on Earth in 2021",
+  "title": {
+    "text": "Hover over the map to highlight plate boundaries",
+    "font": "sans-serif",
+    "fontWeight": 100,
+    "fontSize": 13,
+    "fontStyle": "italic"
+  },
   "projection": {"type": "equirectangular"},
   "data": {"url": "../../data/The_Volcanoes_Of_Earth.csv"},
-  "params": [
-    {
-      "name": "placement_selection",      
-      "bind": {
-        "input": "select",
-        "options": [
-          null,
-          "On land",
-          "Underwater"
-        ],
-        "labels": [
-          "Any",
-          "On land",
-          "Underwater"
-        ],
-        "name": "Volcano Placement: "
-      }
-    }
-  ],
-  "transform": [
-    {"filter": "placement_selection == null | datum.Placement == placement_selection"}
-  ],
   "layer": [
     {
       "data": {"sphere": true},
-      "mark": {"type": "geoshape", "fill": "white"}
+      "mark": {"type": "geoshape", "fill": null}
     },
     {
       "data": {
         "url": "js/ne_110m_admin_0_countries.topojson",
         "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
       },
-      "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "gray"}
+      "mark": {"type": "geoshape", "fill": "whitesmoke", "stroke": "white", "strokeWidth": 2}
+    },
+    {      
+      "data": {
+        "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/PB2002_plates.topojson",
+        "format": {"type": "topojson", "feature": "unnamed"}
+      },
+      "transform": [
+        {"calculate": "datum.properties.PlateName", "as": "Plate_Name"},
+        {"filter": {"param": "highlight"}}
+      ],      
+      "encoding": {
+        "tooltip": [
+          {"field": "Plate_Name", "type": "nominal", "title": "Plate"}
+        ]
+      },
+      "layer": [
+        {
+          "mark": {"type": "geoshape", "fill": "orange", "stroke": "orange", "strokeOpacity": 0.3, "fillOpacity": 0.2},
+          "params": [
+            {
+              "name": "highlight",          
+              "select": {
+                "type": "point",
+                "on": "mouseover"
+              }
+            }
+          ]
+        },
+        {
+          "data": {
+            "values": [
+              {"longitude": -150, "latitude": 5, "plate_name": "Pacific"},
+              {"longitude": 125, "latitude": -30, "plate_name": "Australia"},
+              {"longitude": 10, "latitude": -75, "plate_name": "Antartica"},
+              {"longitude": -80, "latitude": 55, "plate_name": "North America"},
+              {"longitude": -40, "latitude": -20, "plate_name": "South America"},
+              {"longitude": -95, "latitude": -20, "plate_name": "Nazca"},
+              {"longitude": -95, "latitude": 7, "plate_name": "Cocos"},
+              {"longitude": 160, "latitude": 40, "plate_name": "Philippine Sea"},
+              {"longitude": 95, "latitude": -15, "plate_name": "Sunda"},
+              {"longitude": 165, "latitude": 40, "plate_name": "Okhotsk"},
+              {"longitude": 5, "latitude": -5, "plate_name": "Africa"},
+              {"longitude": 54, "latitude": -5, "plate_name": "Somalia"},
+              {"longitude": 55, "latitude": 60, "plate_name": "Eurasia"},
+              {"longitude": 80, "latitude": 15, "plate_name": "India"},
+              {"longitude": 70, "latitude": 10, "plate_name": "Arabia"},
+              {"longitude": -25, "latitude": -70, "plate_name": "Sandwich"}
+            ]
+          },
+          "transform": [
+            {"filter": "datum.plate_name == datum.Plate_name"}
+          ],
+          "mark": "text",
+          "encoding": {
+            "longitude": {
+              "field": "longitude",
+              "type": "quantitative"
+            },
+            "latitude": {
+              "field": "latitude",
+              "type": "quantitative"
+            },
+            "text": {"field": "plate_name", "type": "nominal"},
+            "size": {"value": 20},
+            "color": {"value": "black"}
+          }
+        }
+      ]
     },
     {
-      "mark": {"type": "circle", "size": 12, "opacity": 0.4},
+      "mark": {"type": "circle", "size": 10},
       "encoding": {
         "longitude": {
           "field": "Longitude1",
           "type": "quantitative"
-        },
+        },  
         "latitude": {
           "field": "Latitude1",
           "type": "quantitative"
         },
-        "color": {
-          "field": "Elevation1",
-          "type": "quantitative",
-          "title": "Elevation (m)",
-          "scale": {
-            "type": "threshold",
-            "domain": [-4000, -2000, 0, 2000, 4000],
-            "range": ["#0571b0", "#92c5de", "#b2e2e2", "#bae4b3", "#74c476", "#238b45"]
-          }
-        },
-        "opacity": {"value": 0.6},
+        "color": {"value": "#ff8b1f"},
         "tooltip": [
-          {"field": "Volcano Name", "type": "nominal"},
-          {"field": "Elevation1", "type": "quantitative"},
-          {"field": "Volcano_Type", "type": "nominal"},          
+          {"field": "Volcano_Name", "type": "nominal", "title": "Volcano Name"},        
           {"field": "Country", "type": "nominal"},
-          {"field": "Region", "type": "nominal"},
-          {"field": "Latitude1", "type": "nominal"},
-          {"field": "Longitude1", "type": "nominal"}      
+          {"field": "Region", "type": "nominal"}    
         ]
       }     
     }
   ],
-  "config": {"title": {"font": "sans-serif", "fontSize": 16}}
+  "config": {
+    "view": {"stroke": "transparent"}
+  }
 }
