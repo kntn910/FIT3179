@@ -6,17 +6,18 @@
       "width": 900,
       "height": 500,
       "title": {
-        "text": "Hover over the map to highlight tectonic plates",
-        "font": "sans-serif",
-        "fontWeight": 100,
-        "fontSize": 14,
-        "fontStyle": "italic"
+        "text": "Volcano Locations",
+        "fontSize": 18,
+        "subtitle": "Hover over the map to highlight tectonic plates",
+        "subtitlePadding": 10,
+        "subtitleFontStyle": "italic",
+        "subtitleFontSize": 14
       },
       "projection": {"type": "equirectangular"},
       "layer": [
         {
           "data": {"sphere": true},
-          "mark": {"type": "geoshape", "fill": "#F1F8FE"}
+          "mark": {"type": "geoshape", "fill": "#E3F1FD"}
         },
         {
           "data": {
@@ -124,7 +125,8 @@
             },
             "color": {"value": "#ff8b1f"},
             "tooltip": [
-              {"field": "Volcano_Name", "type": "nominal", "title": "Volcano Name"},        
+              {"field": "Volcano_Name", "type": "nominal", "title": "Volcano Name"},
+              {"field": "Last_Eruption", "type": "nominal"},       
               {"field": "Country", "type": "nominal"},
               {"field": "Region", "type": "nominal"}    
             ]
@@ -135,7 +137,7 @@
     {
       "data": {
         "values": [
-          {"text": "Click me to reveal plates!"}
+          {"text": "Click me to reveal plates"}
         ]
       },
       "selection": {

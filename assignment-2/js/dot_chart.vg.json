@@ -1,5 +1,13 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Volcano Eruptions",
+    "fontSize": 18,
+    "subtitle": "By Year, Country and Deaths",
+    "subtitlePadding": 10,
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 14
+  },
   "data": {
     "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/deaths-from-volcanic-eruptions.csv",
     "format": {"parse": {"Volcanic eruption deaths (NGDC/NOAA)": "number"}}

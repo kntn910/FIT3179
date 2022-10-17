@@ -6,6 +6,12 @@
   ],
   "hconcat": [
     {
+      "title": {
+        "text": "Elevation Distribution",
+        "fontSize": 18,
+        "subtitle": " ",
+        "subtitlePadding":15
+      },
       "width": 750,
       "height": 400,
       "encoding": {
@@ -78,7 +84,7 @@
           "field": "placement",
           "legend": {
             "title": "",
-            "labelFontSize": 20,
+            "labelFontSize": 15,
             "direction": "horizontal",
             "orient": "none",
             "legendX": 85,

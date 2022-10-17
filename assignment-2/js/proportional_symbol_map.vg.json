@@ -1,5 +1,14 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+        "text": "Volcano Status",
+        "fontSize": 18,
+        "subtitlePadding": 10,
+        "subtitle": "Among the Top 10 Countries with the Most Volcanoes",
+        "subtitleFontStyle": "italic",
+        "subtitleFontSize": 14,
+        "dy": -10
+    },
     "data": {
       "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"
     },
@@ -8,8 +17,12 @@
     "projection": {"type": "equirectangular"},
     "layer": [
       {
+        "data": {"sphere": true},
+          "mark": {"type": "geoshape", "fill": "#E3F1FD"}
+      },
+      {
         "data": {
-          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/ne_110m_admin_0_countries.topojson",
+          "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/assignment-2/js/ne_110m_admin_0_countries.topojson",
           "format": {
             "type": "topojson",
             "feature": "ne_110m_admin_0_countries"
@@ -19,21 +32,15 @@
       },
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
-          "format": {"type": "topojson", "feature": "oceans"}
-        },
-        "mark": {"type": "geoshape", "fill": "#F1F8FE"}
-      },
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
+          "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/assignment-2/js/ne_110m_graticules_30.topojson",
           "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
         },
         "mark": {"type": "geoshape", "fill": null, "stroke": "white", "strokeWidth": 1}
       },
       {
         "transform": [
-          {"filter": {"field": "Country", "oneOf": ["United States",
+          {"filter": {"field": "Country", "oneOf": [
+            "United States",
             "Japan",
             "Russia",
             "Indonesia",
@@ -80,7 +87,7 @@
         ],
         "encoding": {
           "longitude": {"field": "Longitude (average)", "type": "quantitative"},
-          "latitude": {"field": "Latitude (average)", "type": "quantitative"},
+          "latitude": {"field": "Latitude (average)", "type": "quantitative"}
         },
         "layer": [
           {
@@ -95,14 +102,16 @@
                 "type": "nominal",
                 "legend": {
                   "titleFontSize": 13,
+                  "titleAnchor":"middle",
                   "labelFontSize": 12,
+                  "direction": "horizontal",
                   "orient": "none",                
-                  "legendX": 20,
-                  "legendY": 35
+                  "legendX": 395,
+                  "legendY": -20
                 },
                 "scale": {
                   "domain": ["Active*", "Extinct"],
-              "range": ["#F58518", "#6B513D"]
+              "range": ["#ff9c40", "#9e816a"]
                 }
               },
               "tooltip": [
@@ -122,6 +131,9 @@
           }
         ]        
       }
-    ]
+    ],
+    "config": {
+        "view": {"stroke": "transparent"}
+      }
   }
   

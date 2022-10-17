@@ -3,6 +3,14 @@
   "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"},
   "width": 650,
   "height": 520,
+  "title": {
+    "text": "Types of Volcanoes",
+    "fontSize": 18,
+    "subtitlePadding": 10,
+    "subtitle": "Among the Top 10 Countries with the Most Volcanoes, and Earth",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 14    
+  },
   "params": [
     {
       "name": "country_select",
@@ -34,7 +42,7 @@
           "Philippines",
           "New Zealand"
         ],
-        "name": "Top 10 Countries "
+        "name": "View Country: "
       }
     }
   ],     
@@ -95,7 +103,8 @@
             ]
           },
           "tooltip": [
-            {"field": "Volcano_Count", "title": "Volcanoes", "type": "quantitative"}
+            {"field": "Volcano_Count", "title": "Volcanoes", "type": "quantitative"},
+            {"field": "Volcano_Type", "title": "Type", "type": "nominal"}
           ]
         }
       },
@@ -109,7 +118,7 @@
         },
         "transform": [
           {"filter": "datum.ranking == 1"},
-          {"calculate": "'The most abundant volcano ; ' + (country_select ? 'in ' + country_select : 'on Earth') + ' is ' + datum.Volcano_Type + ' ;which accounts for ' + datum.Volcano_Count + ' volcanoes'", "as": "text_annotation_raw"},
+          {"calculate": "'The most abundant volcano ; ' + (country_select ? 'in ' + country_select : 'on Earth') + ' is the ' + datum.Volcano_Type + ' ;accounting for ' + datum.Volcano_Count + ' of volcanoes'", "as": "text_annotation_raw"},
           {
             "calculate": "split(datum.text_annotation_raw, ';')",
             "as": "text_annotation"
