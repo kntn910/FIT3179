@@ -1,126 +1,167 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 900,
-  "height": 500,
-  "title": {
-    "text": "Hover over the map to highlight tectonic plates",
-    "font": "sans-serif",
-    "fontWeight": 100,
-    "fontSize": 13,
-    "fontStyle": "italic"
-  },
-  "projection": {"type": "equirectangular"},
   "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"},
-  "layer": [
+  "vconcat": [
     {
-      "data": {"sphere": true},
-      "mark": {"type": "geoshape", "fill": "#F1F8FE"}
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/assignment-2/js/ne_110m_graticules_30.topojson",
-        "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+      "width": 900,
+      "height": 500,
+      "title": {
+        "text": "Hover over the map to highlight tectonic plates",
+        "font": "sans-serif",
+        "fontWeight": 100,
+        "fontSize": 14,
+        "fontStyle": "italic"
       },
-      "mark": {"type": "geoshape", "fill": null, "stroke": "white", "strokeWidth": 1}
-    },
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/assignment-2/js/ne_110m_admin_0_countries.topojson",
-        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
-      },
-      "mark": {"type": "geoshape", "fill": "white", "stroke": "whitesmoke", "strokeWidth": 1}
-    },
-    {      
-      "data": {
-        "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/PB2002_plates.topojson",
-        "format": {"type": "topojson", "feature": "unnamed"}
-      },
-      "transform": [
-        {"calculate": "datum.properties.PlateName", "as": "Plate_Name"},
-        {
-          "lookup": "Plate_Name",
-          "from": {
-            "data": {
-              "values": [
-                {"longitude": -150, "latitude": 5, "plate_name": "Pacific"},
-                {"longitude": 0, "latitude": -75, "plate_name": "Antarctica"},
-                {"longitude": -80, "latitude": 55, "plate_name": "North America"},
-                {"longitude": -50, "latitude": -7, "plate_name": "South America"},
-                {"longitude": -95, "latitude": -20, "plate_name": "Nazca"},
-                {"longitude": -118, "latitude": 7, "plate_name": "Cocos"},
-                {"longitude": -70, "latitude": 25, "plate_name": "Caribbean"},
-                {"longitude": 125, "latitude": -30, "plate_name": "Australia"},
-                {"longitude": 163, "latitude": 8, "plate_name": "Caroline"},
-                {"longitude": 160, "latitude": 27, "plate_name": "Yangtze"},
-                {"longitude": 170, "latitude": 35, "plate_name": "Philippine Sea"},
-                {"longitude": 125, "latitude": 63, "plate_name": "Amur"},
-                {"longitude": 95, "latitude": -15, "plate_name": "Sunda"},
-                {"longitude": 165, "latitude": 40, "plate_name": "Okhotsk"},
-                {"longitude": 5, "latitude": -10, "plate_name": "Africa"},
-                {"longitude": 53, "latitude": -6, "plate_name": "Somalia"},
-                {"longitude": 55, "latitude": 60, "plate_name": "Eurasia"},
-                {"longitude": 80, "latitude": 15, "plate_name": "India"},
-                {"longitude": 70, "latitude": 10, "plate_name": "Arabia"},
-                {"longitude": -50, "latitude": -45, "plate_name": "Scotia"},
-                {"longitude": -25, "latitude": -70, "plate_name": "Sandwich"}
-              ]
-            },          
-            "key": "plate_name",
-            "fields": ["longitude", "latitude"]       
-          }
-        },
-        {"calculate": "datum.longitude == null ? 125 : datum.longitude", "as": "longtitude"},
-        {"calculate": "datum.latitude == null ? -30 : datum.latitude", "as": "latitude"}
-      ],      
-      "encoding": {
-        "fillOpacity": {
-          "condition": {"test": "isDefined(highlight._vgsid_) && highlight._vgsid_ == datum._vgsid_", "value": 0.4},
-          "value": 0
-        }
-      },
+      "projection": {"type": "equirectangular"},
       "layer": [
         {
-          "mark": {"type": "geoshape", "fill": "orange", "fillOpacity": 0},
-          "params": [
+          "data": {"sphere": true},
+          "mark": {"type": "geoshape", "fill": "#F1F8FE"}
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/assignment-2/js/ne_110m_graticules_30.topojson",
+            "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
+          },
+          "mark": {"type": "geoshape", "fill": null, "stroke": "white", "strokeWidth": 1}
+        },
+        {
+          "data": {
+            "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/assignment-2/js/ne_110m_admin_0_countries.topojson",
+            "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+          },
+          "mark": {"type": "geoshape", "fill": "white", "stroke": "whitesmoke", "strokeWidth": 1}
+        },
+        {      
+          "data": {
+            "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/PB2002_plates.topojson",
+            "format": {"type": "topojson", "feature": "unnamed"}
+          },
+          "transform": [
+            {"calculate": "datum.properties.PlateName", "as": "Plate_Name"},
             {
-              "name": "highlight",          
-              "select": {
-                "type": "point",
-                "on": "mouseover"
+              "lookup": "Plate_Name",
+              "from": {
+                "data": {
+                  "values": [
+                    {"longitude": -150, "latitude": 5, "plate_name": "Pacific"},
+                    {"longitude": 0, "latitude": -75, "plate_name": "Antarctica"},
+                    {"longitude": -80, "latitude": 55, "plate_name": "North America"},
+                    {"longitude": -50, "latitude": -7, "plate_name": "South America"},
+                    {"longitude": -95, "latitude": -20, "plate_name": "Nazca"},
+                    {"longitude": -118, "latitude": 7, "plate_name": "Cocos"},
+                    {"longitude": -70, "latitude": 25, "plate_name": "Caribbean"},
+                    {"longitude": 125, "latitude": -30, "plate_name": "Australia"},
+                    {"longitude": 163, "latitude": 8, "plate_name": "Caroline"},
+                    {"longitude": 160, "latitude": 27, "plate_name": "Yangtze"},
+                    {"longitude": 170, "latitude": 35, "plate_name": "Philippine Sea"},
+                    {"longitude": 125, "latitude": 63, "plate_name": "Amur"},
+                    {"longitude": 95, "latitude": -15, "plate_name": "Sunda"},
+                    {"longitude": 165, "latitude": 40, "plate_name": "Okhotsk"},
+                    {"longitude": 5, "latitude": -10, "plate_name": "Africa"},
+                    {"longitude": 53, "latitude": -6, "plate_name": "Somalia"},
+                    {"longitude": 55, "latitude": 60, "plate_name": "Eurasia"},
+                    {"longitude": 80, "latitude": 15, "plate_name": "India"},
+                    {"longitude": 70, "latitude": 10, "plate_name": "Arabia"},
+                    {"longitude": -50, "latitude": -45, "plate_name": "Scotia"},
+                    {"longitude": -25, "latitude": -70, "plate_name": "Sandwich"}
+                  ]
+                },          
+                "key": "plate_name",
+                "fields": ["longitude", "latitude"]       
+              }
+            },
+            {"calculate": "datum.longitude == null ? 125 : datum.longitude", "as": "longtitude"},
+            {"calculate": "datum.latitude == null ? -30 : datum.latitude", "as": "latitude"}
+          ],      
+          "encoding": {
+            "fillOpacity": {
+              "condition": {"test": "isDefined(highlight._vgsid_) && highlight._vgsid_ == datum._vgsid_", "value": 0.4},
+              "value": 0
+            }
+          },
+          "layer": [
+            {
+              "mark": {"type": "geoshape", "fill": "orange", "fillOpacity": 0},
+              "params": [
+                {
+                  "name": "highlight",          
+                  "select": {
+                    "type": "point",
+                    "on": "mouseover"
+                  }
+                }
+              ],
+              "encoding": {
+                "stroke": {
+                  "condition": {"test": "isDefined(click_selected.text)", "value": "black"},
+              "value": null
+                }
+              }
+            },
+            {
+              "mark": "text",
+              "encoding": {
+                "latitude": {"field": "latitude"},
+                "longitude": {"field": "longitude"},
+                "text": {"field": "Plate_Name"},
+                "size": {"value": 18},
+                "color": {"value": "black"}
               }
             }
           ]
         },
         {
-          "mark": "text",
+          "mark": {"type": "circle", "size": 10},
           "encoding": {
-            "latitude": {"field": "latitude"},
-            "longitude": {"field": "longitude"},
-            "text": {"field": "Plate_Name"},
-            "size": {"value": 20},
-            "color": {"value": "black"}
-          }
+            "longitude": {
+              "field": "Longitude1",
+              "type": "quantitative"
+            },  
+            "latitude": {
+              "field": "Latitude1",
+              "type": "quantitative"
+            },
+            "color": {"value": "#ff8b1f"},
+            "tooltip": [
+              {"field": "Volcano_Name", "type": "nominal", "title": "Volcano Name"},        
+              {"field": "Country", "type": "nominal"},
+              {"field": "Region", "type": "nominal"}    
+            ]
+          }     
         }
       ]
     },
     {
-      "mark": {"type": "circle", "size": 10},
-      "encoding": {
-        "longitude": {
-          "field": "Longitude1",
-          "type": "quantitative"
-        },  
-        "latitude": {
-          "field": "Latitude1",
-          "type": "quantitative"
-        },
-        "color": {"value": "#ff8b1f"},
-        "tooltip": [
-          {"field": "Volcano_Name", "type": "nominal", "title": "Volcano Name"},        
-          {"field": "Country", "type": "nominal"},
-          {"field": "Region", "type": "nominal"}    
+      "data": {
+        "values": [
+          {"text": "Click me to reveal plates!"}
         ]
-      }     
+      },
+      "selection": {
+        "click_selected": {
+          "type": "multi",
+          "fields": ["text"],
+          "bind": "legend"
+        }
+      },
+      "mark": {
+        "type": "rect",
+        "fill": null
+      },
+      "encoding": {
+        "color": {
+          "field": "text",
+          "legend": {
+            "title": "",
+            "orient": "none",
+            "labelFontSize": 14,
+            "labelFontStyle": "italic",
+            "legendX": 380,
+            "legendY": 500
+          }
+        }        
+      }
     }
   ],
   "config": {

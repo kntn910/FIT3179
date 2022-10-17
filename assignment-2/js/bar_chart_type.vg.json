@@ -1,42 +1,43 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": ".                 Type",
-    "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"},
-    "params": [
-      {
-        "name": "country_select",
-        "bind": {
-          "input": "select",
-          "options": [
-            null,
-            "United States",
-            "Japan",
-            "Russia",
-            "Indonesia",
-            "Chile",
-            "Papua New Guinea",
-            "Ethiopia",
-            "Mexico",
-            "Philippines",
-            "New Zealand"
-          ],
-          "labels": [
-            "All",
-            "United States",
-            "Japan",
-            "Russia",
-            "Indonesia",
-            "Chile",
-            "Papua New Guinea",
-            "Ethiopia",
-            "Mexico",
-            "Philippines",
-            "New Zealand"
-          ],
-          "name": "Top 10 Countries"
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"},
+  "width": 650,
+  "height": 520,
+  "params": [
+    {
+      "name": "country_select",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "United States",
+          "Japan",
+          "Russia",
+          "Indonesia",
+          "Chile",
+          "Papua New Guinea",
+          "Ethiopia",
+          "Mexico",
+          "Philippines",
+          "New Zealand"
+        ],
+        "labels": [
+          "All",
+          "United States",
+          "Japan",
+          "Russia",
+          "Indonesia",
+          "Chile",
+          "Papua New Guinea",
+          "Ethiopia",
+          "Mexico",
+          "Philippines",
+          "New Zealand"
+        ],
+        "name": "Top 10 Countries "
       }
-    ],
+    }
+  ],     
     "transform": [
       {"filter": "country_select == null | datum.Country == country_select"},
       {
@@ -52,56 +53,78 @@
         "sort": [{"field": "Volcano_Count", "order": "descending"}]
       }
     ],
-    "vconcat": [
+    "encoding": {
+      "x": {
+        "field": "Volcano_Count",
+        "type": "quantitative",
+        "title": "Number of Volcanoes",
+        "axis": {
+          "titleFontSize": 13,
+          "titlePadding": 10,
+          "labelFontSize": 12,
+          "labelColor": "gray",
+          "tickCount": 4,
+          "gridDash": [2, 2]
+        }
+      },
+      "y": {
+        "field": "Volcano_Type",
+        "type": "nominal",
+        "title": "",
+        "axis": {
+          "labelFontSize": 12,
+          "domain": false,
+          "grid": false,
+          "ticks": false
+        },
+        "sort": "-x"
+      }
+    },
+    "layer": [
       {
-        "width": 600,
-        "height": 500,
         "mark": {
           "type": "bar",
           "stroke": null,
           "color": "#FFE4B2"
-        },
+        },    
         "encoding": {
-          "x": {
-            "field": "Volcano_Count",
-            "type": "quantitative",
-            "title": "Number of Volcanoes",
-            "axis": {
-              "titleFontSize": 12,
-              "labelFontSize": 11,
-              "labelColor": "gray",
-              "tickCount": 4,
-              "gridDash": [2, 2]
-            }
-          },
-          "y": {
-            "field": "Volcano_Type",
-            "type": "nominal",
-            "title": "",
-            "axis": {
-              "labelFontSize": 12,
-              "domain": false,
-              "grid": false,
-              "ticks": false
-            },
-            "sort": "-x"
-          },
           "color": {
             "condition": [
-              {"test": "datum.ranking == 1", "value": "#FFD17B"}
+              {"test": "datum.ranking == 1", "value": "#FFD17B"},
+              {"test": "datum.Volcano_Type == 'Unknown'", "value": "#f0eeed"}
             ]
           },
           "tooltip": [
             {"field": "Volcano_Count", "title": "Volcanoes", "type": "quantitative"}
           ]
         }
+      },
+      {          
+        "mark": {
+          "type": "text",
+          "dx": -250,
+          "dy": -10,
+          "size": 20,
+          "color": "darkorange" 
+        },
+        "transform": [
+          {"filter": "datum.ranking == 1"},
+          {"calculate": "'The most abundant volcano ; ' + (country_select ? 'in ' + country_select : 'on Earth') + ' is ' + datum.Volcano_Type + ' ;which accounts for ' + datum.Volcano_Count + ' volcanoes'", "as": "text_annotation_raw"},
+          {
+            "calculate": "split(datum.text_annotation_raw, ';')",
+            "as": "text_annotation"
+          }           
+        ],
+        "encoding": {
+          "y": {"sort": "-x"},
+          "text": {"field": "text_annotation"}
+        }
       }
-    ]
-    ,
-    "config": {
+    ],
+    
+  "config": {
     "view": {
-       "stroke": "transparent"
+      "stroke": "transparent"
     }
   }
-  }
-  
+}

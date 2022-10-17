@@ -1,99 +1,145 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "name": "source 1",
-      "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/deaths-from-volcanic-eruptions.csv"
-    },
-    "width": 600,
-    "height": 500,
-    "params": [
-      {
-        "name": "After_Year",
-        "value": 1600,
-        "bind": {
-          "input": "range",
-          "min": -141,
-          "max": 2017,
-          "step": 100,
-          "name": "From Year: "
-        }
-      },
-      {
-        "name": "Minimum_Deaths",
-        "value": 1000,
-        "bind": {
-          "input": "range",
-          "min": 1,
-          "max": 60000,
-          "step": 500,
-          "name": "Minimum Deaths: "
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/deaths-from-volcanic-eruptions.csv",
+    "format": {"parse": {"Volcanic eruption deaths (NGDC/NOAA)": "number"}}
+  },
+  "width": 600,
+  "height": 500,
+  "params": [
+    {
+      "name": "After_Year",
+      "value": 1600,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 2017,
+        "step": 100,
+        "name": "Year onwards: "
       }
-    ],
-    "transform": [
-      {
-          "lookup": "Entity",
-          "from": {
-            "data": {
-"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"
-            },          
-          "key": "Country",
-          "fields": ["Region"]         
-        }
-      },
-      {"filter": "datum.Entity !== 'World'"},
-      {"filter": "datum.Year > After_Year"},
-      {"filter": "datum['Volcanic eruption deaths (NGDC/NOAA)'] > Minimum_Deaths"},
-      {"calculate": "datum['Volcanic eruption deaths (NGDC/NOAA)']", "as": "Deaths"},
-      {"calculate": " datum.Region == null ? 'Mediterranean and Western Asia' : datum.Region",
-      "as": "Region"}
-    ],
-    "mark": {
-      "type": "circle",
-      "opacity": 0.8,
-      "stroke": "black",
-      "strokeWidth": 1
     },
-    "encoding": {
-      "x": {
-        "field": "Year",
-        "type": "quantitative",
-        "axis": {
-          "grid": false,
-          "titleFontSize": 13,
-          "labelFontSize": 11
+    {
+      "name": "Minimum_Deaths",
+      "value": 1000,
+      "bind": {
+        "input": "range",
+        "min": 1,
+        "max": 16000,
+        "step": 500,
+        "name": "Minimum deaths: "
+      }
+    }
+  ],
+  "transform": [
+    {
+        "lookup": "Entity",
+        "from": {
+          "data": {
+"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"
+          },          
+        "key": "Country",
+        "fields": ["Region"]         
+      }
+    },
+    {"filter": "datum.Entity !== 'World'"},
+    {"filter": "datum.Year >= After_Year"},
+    {"filter": "datum['Volcanic eruption deaths (NGDC/NOAA)'] > Minimum_Deaths"},
+    {"calculate": "datum['Volcanic eruption deaths (NGDC/NOAA)']", "as": "Deaths"},
+    {"calculate": " datum.Region == null ? 'Mediterranean and Western Asia' : datum.Region",
+    "as": "Region"},
+    {
+      "window": [{"op": "rank", "as": "ranking"}],
+      "sort": [{"field": "Deaths", "order": "descending"}]
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "quantitative",
+      "axis": {
+        "grid": false,
+        "titleFontSize": 13,
+        "titlePadding": 10,
+        "labelFontSize": 12,
+        "format": "f",
+        "tickCount": 10
+      },
+      "scale": {"domain": [{"expr": "After_Year"}, "2017"]}       
+    },
+    "y": {
+      "field": "Entity",
+       "type": "nominal",
+       "axis": {
+         "title": "",
+          "labelFontSize": 12,            
+          "grid": true
+       }
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.8,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "stroke": {
+          "condition": {"test": "datum.ranking == 1", "value": "black"},
+          "value": "white"
         },
-        "scale": {"domain": [{"expr": "After_Year"}, "2017"]}       
+        "strokeWidth": {
+          "condition": {"test": "datum.ranking == 1", "value": 2},
+          "value": 1
+        },    
+        "size": {
+          "field": "Deaths",
+          "type": "quantitative",
+          "title": "Deaths",
+          "legend": {"clipHeight": 45},
+          "scale": {
+            "domain": [1, 60000],
+            "rangeMax": 5000
+          }
+        },
+        "color": {
+          "field": "Region",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Volcanic Region", "Mediterranean and Western Asia", "Iceland and Arctic Ocean", "Japan, Taiwan, Marianas", "South America", "Melanesia and Australia", "Africa and Red Sea", "Atlantic Ocean", "México and Central America", "Philippines and SE Asia"],
+            "range": ["#F58518", "#EECA3B", "#FF9DA6", "#81DBDB", "#00B0F0", "#0070C0", "#A99BFB", "#BAB0AC", "#BF9000", "#6B513D"]
+          }
+        },
+        "tooltip": [
+          {"field": "Year", "type": "quantitative"},
+          {"field": "Deaths", "type": "quantitative", "format": ","},        
+          {"field": "Region", "type": "nominal"},
+          {"field": "Entity", "type": "nominal", "title": "Country"}        
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -90,
+        "size": 12
       },
-      "y": {
-        "field": "Entity",
-         "type": "nominal",
-         "axis": {
-           "title": "",
-            "labelFontSize": 11,            
-            "grid": true
-         }
-      },
-      "size": {
-        "field": "Deaths",
-        "type": "quantitative",
-        "title": "Deaths",
-        "legend": {"clipHeight": 35},
-        "scale": {"rangeMax": 5000}
-      },
-      "color": {
-        "field": "Region",
-        "type": "nominal",
-        "scale": {
-        "domain": ["Volcanic Region", "Mediterranean and Western Asia", "Iceland and Arctic Ocean", "Japan, Taiwan, Marianas", "South America", "Melanesia and Australia", "Africa and Red Sea", "Atlantic Ocean", "México and Central America", "Philippines and SE Asia"]
-        }
-      },
-      "tooltip": [
-        {"field": "Year", "type": "quantitative"},
-        {"field": "Deaths", "type": "quantitative", "format": ","},        
-        {"field": "Region", "type": "nominal"},
-        {"field": "Entity", "type": "nominal", "title": "Country"}        
-      ]
+      "transform": [
+        {"filter": "datum['ranking'] == 1"},
+        {"calculate": "'The worst eruption; of the selected period:; ' + datum.Deaths + ' deaths;↓'", "as": "text_annotation_raw"},
+        {"calculate": "split(datum.text_annotation_raw, ';')", "as": "text_annotation"}
+      ],
+      "encoding": {
+          "text": {"field": "text_annotation"}
+      }
+    }
+  ],
+  "config": {
+    "legend": {
+        "clipHeight": 16,
+        "titleFontSize": 13,
+        "labelFontSize": 12
     }
   }
-  
+}

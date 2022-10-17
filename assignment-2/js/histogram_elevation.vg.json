@@ -78,14 +78,17 @@
           "field": "placement",
           "legend": {
             "title": "",
-            "labelFontSize": 13,
+            "labelFontSize": 20,
             "direction": "horizontal",
             "orient": "none",
-            "legendX": 600,
-            "legendY": 20
+            "legendX": 85,
+            "legendY": 10,
+            "columnPadding": 330,
+            "symbolSize": 200,
+            "labelColor": "darkgray"
           },
           "scale": {
-            "domain": ["Underwater", "On land"],
+            "domain": ["169 Underwater", "2368 On Land"],
             "range": ["#ACE9FD", "#9CFB8B"]
           }
         }        
