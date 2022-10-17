@@ -3,9 +3,8 @@
     "data": {
       "url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"
     },
-    "width": 800,
+    "width": 900,
     "height": 500,
-    "title": "Earthquakes above a magnitude of 5 (2000-2021)",
     "projection": {"type": "equirectangular"},
     "layer": [
       {
@@ -16,34 +15,57 @@
             "feature": "ne_110m_admin_0_countries"
           }
         },
-        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+        "mark": {"type": "geoshape", "fill": "white", "stroke": "whitesmoke", "strokeWidth": 1}
       },
       {
         "data": {
           "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
           "format": {"type": "topojson", "feature": "oceans"}
         },
-        "mark": {"type": "geoshape", "fill": "skyblue"}
+        "mark": {"type": "geoshape", "fill": "#F1F8FE"}
       },
       {
         "data": {
           "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/2_symbol_map/js/WorldMapWithGraticules.topojson",
           "format": {"type": "topojson", "feature": "ne_110m_graticules_30"}
         },
-        "mark": {"type": "geoshape", "fill": null, "stroke": "lightgray"}
+        "mark": {"type": "geoshape", "fill": null, "stroke": "white", "strokeWidth": 1}
       },
       {
         "transform": [
-          {"filter": {"field": "Country", "oneOf": ["Australia"]}},
+          {"filter": {"field": "Country", "oneOf": ["United States",
+            "Japan",
+            "Russia",
+            "Indonesia",
+            "Chile",
+            "Papua New Guinea",
+            "Ethiopia",
+            "Mexico",
+            "Philippines",
+            "New Zealand"]}},
           {
             "aggregate": [{
               "op": "count",
               "field": "Volcano_Name",
               "as": "Active_Volcano_Count"
             }],
-            "groupby": ["Volcano_Name", "Country", "epoch_period", "population_within_5km"]
+            "groupby": ["Country", "epoch_period"]
           },
           {"calculate": "datum.epoch_period == 'holocene' ? 'Active*' : 'Extinct'", "as": "Status"},
+          {
+            "window": [{"op": "sum", "field": "Active_Volcano_Count", "as": "Total"}],
+            "frame": [null, null],
+            "groupby": ["Country"]
+          },
+          {"calculate": "datum.Active_Volcano_Count/datum.Total * 100", "as": "Percent"},
+          {
+            "stack": "Percent",
+            "offset": "normalize",
+            "as": ["v1", "v2"],
+            "groupby": ["Country"]
+          },
+          {"calculate": "datum.v1 * (2*PI)", "as": "t1"},
+          {"calculate": "datum.v2* (2*PI)", "as": "t2"},
           {
             "lookup": "Country",
             "from": {
@@ -58,32 +80,48 @@
         ],
         "encoding": {
           "longitude": {"field": "Longitude (average)", "type": "quantitative"},
-          "latitude": {"field": "Latitude (average)", "type": "quantitative"}
+          "latitude": {"field": "Latitude (average)", "type": "quantitative"},
         },
         "layer": [
           {
             "mark": {
-                  "type": "arc", "innerRadius": 5, "outerRadius": 10
-                },
+              "type": "arc", "innerRadius": 10, "outerRadius": 20,
+              "theta": {"expr": "datum.t1"},
+              "theta2": {"expr": "datum.t2"}
+            },
             "encoding": {
-              "theta": {"aggregate": "sum", "field": "Active_Volcano_Count", "type": "quantitative", "stack": true},
-              "color": {"field": "epoch_period", "type": "nominal", "legend": null},
+              "color": {
+                "field": "Status",
+                "type": "nominal",
+                "legend": {
+                  "titleFontSize": 13,
+                  "labelFontSize": 12,
+                  "orient": "none",                
+                  "legendX": 20,
+                  "legendY": 35
+                },
+                "scale": {
+                  "domain": ["Active*", "Extinct"],
+              "range": ["#F58518", "#6B513D"]
+                }
+              },
               "tooltip": [
-                {"field": "Status", "type": "nominal"},        
                 {"field": "Country", "type": "nominal"},
-                {"aggregate": "sum", "field": "Active_Volcano_Count", "type": "quantitative"}  
+                {"field": "Status", "type": "nominal", "title": "Volcano Status"},
+                {"field": "Active_Volcano_Count", "type": "nominal", "title": "Number of volcanoes"}
               ]
             }
           },
           {
-            "mark": {"type": "text", "radius": 20},
-            "encoding": {
-              "text": {"field": "Status", "type": "nominal"}
-            }
+            "mark": {
+              "type": "text",
+              "size": 12,
+              "dy": -30
+            },
+            "encoding": {"text": {"field": "Country"}}
           }
-        ]
+        ]        
       }
-    ],
-    "config": {"title": {"font": "sans-serif", "fontSize": 16}}
+    ]
   }
   
