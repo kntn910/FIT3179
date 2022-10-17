@@ -1,89 +1,98 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"},
-    "transform": [
-      {"filter": "datum['Elevation1'] != 'Not available'"},
-      {
-        "bin": {"step": 1000, "extent": [-6000, 7000]},
-        "field": "Elevation1",
-        "as": "elevation"
-      }
-    ],
-    "hconcat": [
-      {
-        "width": 600,
-        "height": 400,
-        "encoding": {
-          "x": {
-            "field": "elevation",
-            "title": "Elevation (m)",
-            "axis": {
-              "titleFontSize": 12,
-              "labelAngle": 0,
-              "values": [-6000, -4000, -2000, 0, 2000, 4000, 6000],
-              "labelFontSize": 11,
-              "labelColor": "gray"
-            }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/kntn910/FIT3179/main/data/The_Volcanoes_Of_Earth.csv"},
+  "transform": [
+    {"filter": "datum['Elevation1'] != 'Not available'"}
+  ],
+  "hconcat": [
+    {
+      "width": 750,
+      "height": 400,
+      "encoding": {
+        "x": {
+          "bin": {"step": 1000},
+          "field": "Elevation1",
+          "title": "Elevation (binned, m)",
+          "axis": {
+            "titleFontSize": 13,
+            "titlePadding": 10,          
+            "labelFontSize": 12,
+            "labelColor": "gray",
+            "format": "f"
           },
-          "y": {
-            "aggregate": "count",
-            "title": "",
-            "axis": {"title": "Number of Volcanoes", "titleFontSize": 14, "grid": false, "ticks": false, "values": []}
-          },
-          "color": {
-            "condition": [
-              {"test": "datum.elevation < 0", "value": "#cbf2ff"}        
-            ], "value": "#bdf5b3"
+          "scale": {"domain": [-6000, 7000]}
+        },
+        "y": {
+          "aggregate": "count",
+          "title": "",
+          "axis": {
+            "title": "Number of Volcanoes",
+            "titleFontSize": 13,
+            "grid": false,
+            "ticks": false,
+            "values": []
           }
         },
-        "layer": [
-          {
-            "mark": {
-            "type": "bar",
-            "stroke": null
+        "color": {
+          "condition": [
+            {"test": "datum.bin_step_1000_Elevation1 < 0", "value": "#cbf2ff"}        
+          ], "value": "#bdf5b3"
         }
+      },
+      "layer": [
+        {
+          "mark": {
+          "type": "bar",
+          "stroke": null
+      }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "fontStyle": "italic",
+            "fontSize": 13,
+            "align": "center",
+            "baseline": "middle",
+            "dy": -10
           },
-          {
-            "mark": {
-              "type": "text",
-              "fontStyle": "italic",
-              "fontSize": 14,
-              "align": "center",
-              "baseline": "middle",
-              "dy": -10
-            },
-            "encoding": {"text": {"aggregate": "count"}}
+          "encoding": {
+            "text": {"aggregate": "count"},
+            "color": {"value": "black"}
           }
+        }
+      ]
+    },
+    {
+      "data": {
+        "values": [
+          {"placement": "Underwater"},
+          {"placement": "On land"}
         ]
       },
-      {
-        "data": {
-          "values": [
-            {"placement": "Underwater"},
-            {"placement": "On land"}
-          ]
-        },
-        "mark": {
-          "type": "circle",
-          "fill": null
-        },
-        "encoding": {
-          "color": {
-            "field": "placement",
-            "legend": {
-              "title": "",
-              "labelFontSize": 13
-            },
-            "scale": {
-              "domain": ["Underwater", "On land"],
-              "range": ["#ACE9FD", "#9CFB8B"]
-            }
-          }        
-        }    
-      }
-    ],
-    "config": {
-      "view": {"stroke": "transparent"}
+      "mark": {
+        "type": "circle",
+        "fill": null
+      },
+      "encoding": {
+        "color": {
+          "field": "placement",
+          "legend": {
+            "title": "",
+            "labelFontSize": 13,
+            "direction": "horizontal",
+            "orient": "none",
+            "legendX": 600,
+            "legendY": 20
+          },
+          "scale": {
+            "domain": ["Underwater", "On land"],
+            "range": ["#ACE9FD", "#9CFB8B"]
+          }
+        }        
+      }    
     }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"}
   }
-  
+}
