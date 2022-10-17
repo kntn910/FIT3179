@@ -101,9 +101,10 @@
                 "field": "Status",
                 "type": "nominal",
                 "legend": {
-                  "titleFontSize": 13,
+                  "title": "",
                   "titleAnchor":"middle",
-                  "labelFontSize": 12,
+                  "symbolSize":150,
+                  "labelFontSize": 13,
                   "direction": "horizontal",
                   "orient": "none",                
                   "legendX": 395,
